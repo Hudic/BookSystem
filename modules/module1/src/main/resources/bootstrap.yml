@@ -1,0 +1,17 @@
+server:
+  port: 6101
+spring:
+  application:
+    name: module1
+  security:
+    user:
+      name: admin
+      password: db2admin
+eureka:
+  instance:
+    hostname: localhost
+    #    prefer-ip-address: true
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:6001/eureka/

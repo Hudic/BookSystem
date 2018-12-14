@@ -1,0 +1,18 @@
+server:
+  port: 6001  # 设置web项目服务端口号
+spring:
+  application:
+    name: eureka  # 设置服务名称
+  security:       # 一般注册中心、配置中心都会使用安全加密
+    user:
+      name: admin
+      password: db2admin
+eureka:
+  instance:
+    hostname: localhost # 设置服务主机IP
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false # false:注册中心不需要注册自己。true（默认）: 需要注册自己
+    fetch-registry: false       # false:注册中心不需要去发现服务。true（默认）: 需要发现服务
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
