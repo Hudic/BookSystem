@@ -1,0 +1,20 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: sys-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Hudic/Configuration/          # 存放了配置文件的仓库
+          search-paths: BookSystem                              # 仓库下配置文件所处的文件夹
+          username:                                             # git仓库的账号
+          password:                                             # git仓库的密码
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    eureka-server-port: 9001
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka/

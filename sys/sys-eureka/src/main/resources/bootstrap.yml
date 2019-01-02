@@ -1,0 +1,13 @@
+server:
+  port: 9001  # 设置web项目服务端口号
+spring:
+  application:
+    name: sys-eureka  # 设置服务名称
+eureka:
+  instance:
+    hostname: localhost # 设置服务主机IP
+  client:
+    register-with-eureka: false # false:注册中心不需要注册自己。true（默认）: 需要注册自己
+    fetch-registry: false       # false:注册中心不需要去发现服务。true（默认）: 需要发现服务
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
