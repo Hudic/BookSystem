@@ -1,15 +1,18 @@
-server:
-  port: 9003
+#server:
+#  port: 9003
+# 此配置存放到了云端
+
+# 云端不可存放以下配置，因为以下配置是用来在eureka中心寻找config-server端，找到之后才能获取云端的配置文件
 spring:
-  application:
-    name: sys-auth
+#  application:
+#    name: sys-auth
   cloud:
     config:
       discovery:
         enabled: true               # 表示自己是一个config服务调用端/消费端 (可以去寻找、调用config服务生产端？)
         service-id: sys-config      # (本地)server端spring.application.name的值
         # uri: http://localhost:6002/ 支持服务名称后就不再需要配置服务端地址了，方便服务地址的改变
-      name: BookSystem              # (云端)配置文件的前半部分(完整的文件名是Hudic-config-dev.properties)
+      name: BookSystem, sys-auth    # (云端)配置文件的前半部分(完整的文件名是Hudic-config-dev.properties)
       profile: dev                  # (云端)配置文件的后半部分，也可以hudic 和 config-dev的形式分割
       label: master                 # (云端)仓库的branch(分支)
 eureka:

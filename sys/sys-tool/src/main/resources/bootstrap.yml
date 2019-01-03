@@ -1,0 +1,18 @@
+server:
+  port: 9901
+spring:
+  application:
+    name: sys-tool
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: sys-config
+      name: BookSystem, swagger     # (云端)配置文件的前半部分(完整的文件名是Hudic-config-dev.properties)
+      profile: dev                  # (云端)配置文件的后半部分，也可以hudic 和 config-dev的形式分割
+      label: master                 # (云端)仓库的branch(分支)
+eureka:
+  client:
+    eureka-server-port: 9001
+    service-url:
+      defaultZone: http://${spring.cloud.client.ip-address}:${eureka.client.eureka-server-port}/eureka/        # 向这个eureka中心注册自己

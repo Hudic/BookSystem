@@ -18,3 +18,4 @@ eureka:
     eureka-server-port: 9001
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka/
+      # 向这个地址的eureka中心注册自己，如需向多个eureka中心注册，则用,分隔符填写多个地址
